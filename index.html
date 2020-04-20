@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <title>Power List | Everything In One Place</title>
+    <meta
+      name="keywords"
+      content="todo list, task list, online todo list, online task list"
+    />
+    <meta
+      name="description"
+      content="Create a dynamic list that is accessible anywhere from any device!"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/app.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/f0724ad0f4.js"></script>
+  </head>
+
+  <body>
+    <div id="loader">
+      <div class="background">
+        <div class="circle">
+          <p id="loading">loading</p>
+        </div>
+        <div class="blur"></div>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="container">
+        <div id="heading">
+          <h1 id="siteTitle">Power List</h1>
+        </div>
+        <div class="selectFolder">
+          <form action="" id="selectFolder" name="selectFolder">
+            <input
+              autocomplete="off"
+              type="text"
+              id="selectFolderValue"
+              name="selectFolderValue"
+              class="cleanInput"
+              placeholder="Type Folder"
+            />
+            <input type="submit" value="Select" class="btn" id="select" />
+            <input type="button" value="Cancel" class="btn" id="selectCancel" />
+          </form>
+        </div>
+        <div id="newEntry">
+          <div class="newTask">
+            <form name="addTask" action="" id="addTask">
+              <input
+                autocomplete="off"
+                type="text"
+                name="newTaskValue"
+                id="newTaskValue"
+                class="cleanInput"
+                placeholder="New Task"
+              />
+              <ul>
+                <li id="tasksDropDown">
+                  <!--								<button class="btn dropDown" id="addTo">ADD TO</button>-->
+                  <ul>
+                    <li>
+                      <input
+                        type="submit"
+                        value="Add Task"
+                        class="btn addTo dropDown"
+                        id="addToTasks"
+                      />
+                    </li>
+                    <!--
+									<li>
+										<input type="submit" value="Add To Folder" class="btn addTo dropDown" id="addToFolder">
+									</li>
+-->
+                  </ul>
+                </li>
+              </ul>
+            </form>
+          </div>
+          <div class="newFolder">
+            <form action="" id="createFolder" name="createFolder">
+              <input
+                autocomplete="off"
+                type="text"
+                id="newFolderValue"
+                name="newFolderValue"
+                class="cleanInput"
+                placeholder="New Folder"
+              />
+              <input
+                type="submit"
+                value="Add Folder"
+                class="btn"
+                id="createFolderBtn"
+              />
+            </form>
+          </div>
+          <div id="exit">
+            <i class="fas fa-times-circle fa-2x"></i>
+          </div>
+        </div>
+        <div id="taskList">
+          <div class="filter">
+            <form action="" name="filter">
+              <input
+                autocomplete="off"
+                type="text"
+                name="filterValue"
+                id="filterValue"
+                placeholder="Filter Tasks"
+                class="cleanInput"
+              />
+            </form>
+          </div>
+
+          <ul id="tasks">
+            <p>TASKS</p>
+            <div id="icons">
+              <div class="newItemsIcons">
+                <i class="fas fa-file" id="newTaskIcon"></i>
+              </div>
+              <div class="newItemsIcons">
+                <i class="fas fa-folder-plus" id="newFolderIcon"></i>
+              </div>
+            </div>
+
+            <!--
+					<li class="folder">
+						This Is A Folder
+						<ul>
+							<li class="folder-item">This Is A Folder Task<i class="fas fa-trash-alt trashBin"></i></li>
+						</ul>
+						<i class="fas fa-trash-alt trashBin"></i>
+					</li>
+					<li class="task">
+						This Is A Task <i class="fas fa-trash-alt trashBin"></i>
+					</li>
+-->
+          </ul>
+        </div>
+        <div id="space">
+          <button id="clearTasks">Erase Everything</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

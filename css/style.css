@@ -1,0 +1,592 @@
+/* CSS Document */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --active-color: #00cbff;
+  --inactive-color: #af7bc5;
+  --process-color: #ffaf45;
+  --bg-dark: #222;
+}
+/************************************************************** LOADER
+  ****************************************************************/
+#loader {
+  display: none;
+}
+.background {
+  background: #333;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.circle {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  /*   background: rgba(255, 255, 255, 0.01); */
+  border: 5px none red;
+  border-radius: 50%;
+  border-top: 5px dotted green;
+  border-bottom-color: ;
+  border-right-color: ;
+  border-left-color: ;
+  animation: rotation 800ms linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#loading {
+  color: white;
+  animation: anti-rotation 800ms linear infinite;
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 5;
+}
+.blur {
+  width: 100px;
+  height: 100px;
+  background: green;
+  filter: blur(20px);
+  z-index: 1;
+  opacity: 0.36;
+  border-radius: 50%;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes anti-rotation {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+#loading::after {
+  content: " ";
+  animation: loading 1600ms linear infinite;
+}
+@keyframes loading {
+  0% {
+    content: " ";
+  }
+  33% {
+    content: ".";
+  }
+  66% {
+    content: "..";
+  }
+  100% {
+    content: "...";
+  }
+}
+.blur:hover {
+  background: red;
+}
+.circle:hover {
+  border-top: 5px dotted yellow;
+}
+/**************************************************************
+  ****************************************************************/
+.wrapper {
+  background: var(--bg-dark);
+  width: 100%;
+  position: relative;
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  padding: 0 5%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: #222;
+  height: 100%;
+}
+#space {
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+body {
+  background: #222;
+  font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+}
+#heading {
+  padding: 1rem;
+  font-weight: 100;
+  color: white;
+}
+#siteTitle {
+  padding: 1rem;
+}
+#selectFolder {
+  width: 50%;
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 15%;
+  transform: translatex(-50%);
+  background: #222;
+  height: 12rem;
+  display: none;
+  align-items: center;
+}
+#selectCancel {
+  position: absolute;
+  right: 0px;
+  width: 23%;
+  top: 12%;
+}
+#selectCancel:hover {
+  background: crimson;
+}
+#selectFolderValue {
+  height: 3rem;
+}
+#newEntry,
+#newFolderValue,
+#newTaskValue,
+.btn {
+  display: block;
+  margin: 1rem;
+}
+#newEntry,
+#taskList {
+  width: 50%;
+}
+#newEntry {
+  position: fixed;
+  z-index: 12;
+  background: rgba(0, 0, 0, 0.9);
+  margin: 0 auto;
+  height: 100vh;
+  top: 0;
+  width: 84vw;
+  display: none;
+  border-radius: 21px;
+  overflow: hidden;
+}
+#exit {
+  width: 1rem;
+  /*	background: crimson;*/
+  align-self: center;
+  position: absolute;
+  top: 12%;
+  right: 12%;
+}
+#exit .fa-times-circle {
+  color: crimson;
+  cursor: pointer;
+}
+#createFolderBtn:hover {
+  background: var(--inactive-color);
+}
+.newFolder,
+.newTask {
+  width: 45%;
+  margin: 0 auto;
+  display: none;
+}
+.flex {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+.btn {
+  width: 30%;
+  align-self: center;
+  cursor: pointer;
+  border: none;
+  background: var(--bg-dark);
+  padding: 0.5rem;
+  color: #fff;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  outline: none;
+}
+.btn:hover {
+  background: #00a8d3;
+  color: #fff;
+}
+
+.dropDown {
+  width: 6rem;
+}
+#addTo {
+  pointer-events: none;
+}
+#addToFolder {
+  top: 0%;
+  display: none;
+}
+/*
+  #tasksDropDown:hover .addTo{
+      display: block;
+  }
+  */
+
+.cleanInput {
+  padding: 1rem 0px 0.5rem 0px;
+  font-size: 1rem;
+  background: none;
+  border: none;
+  width: 100%;
+  border-bottom: solid rgba(255, 255, 255, 0.5) 1px;
+  outline-style: none;
+  color: #e6faff;
+}
+.cleanInput:focus {
+  border-bottom: 2px solid var(--process-color);
+}
+label {
+  display: none;
+  /*	align-self: center;*/
+}
+p {
+  text-align: center;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px #ccc solid;
+}
+ul {
+  list-style: none;
+}
+#taskListHeading {
+  text-align: center;
+}
+#filterValue {
+  margin-bottom: 1rem;
+}
+#tasks {
+  box-shadow: 2px 2px 9px rgba(255, 255, 255, 0.5);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  color: #fff;
+  height: 100%;
+}
+#tasks p {
+  user-select: none;
+}
+#icons {
+  display: flex;
+  justify-content: center;
+}
+.newItemsIcons {
+  padding: 0.9rem 1.2rem;
+}
+#newTaskIcon {
+  color: var(--active-color);
+  cursor: pointer;
+}
+#newFolderIcon {
+  color: var(--inactive-color);
+  cursor: pointer;
+}
+.tasksShadowDelete {
+  /*	box-shadow: 2px 2px 9px rgba(238, 67, 67,1) !important;*/
+  animation: delete 400ms ease-in-out infinite alternate !important;
+}
+.tasksShadowAddTask {
+  animation: addTask 400ms ease-in-out infinite alternate !important;
+}
+.tasksShadowAddFolder {
+  animation: addFolder 400ms ease-in-out infinite alternate !important;
+}
+form {
+  display: flex;
+  justify-content: center;
+}
+.folder {
+  position: relative;
+  /*	align-self: center;*/
+  border: none;
+  background: #836191;
+  padding: 0.5rem;
+  color: #fff;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  outline: none;
+  text-align: center;
+  user-select: none;
+}
+.folder:hover .trashBin {
+  display: inline-block !important;
+}
+.folder-item {
+  position: relative;
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  display: block;
+  align-self: center;
+  border: none;
+  background: var(--bg-dark);
+  padding: 0.5rem;
+  color: #fff;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  outline: none;
+  user-select: none;
+  text-align: left;
+}
+.folder-item:hover {
+  background: var(--active-color);
+}
+.folder-item:hover .trashBin {
+  display: inline-block !important;
+}
+.task {
+  position: relative;
+  padding-left: 1rem;
+  align-self: center;
+  border: none;
+  background: var(--bg-dark);
+  padding: 0.5rem;
+  color: #fff;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  outline: none;
+  user-select: none;
+}
+.task:hover {
+  background: var(--active-color);
+}
+.task:hover .trashBin {
+  display: inline-block !important;
+}
+.task:hover .putInFolder {
+  display: inline-block !important;
+}
+.putInFolder {
+  position: absolute;
+  right: 12%;
+  cursor: pointer;
+  display: none !important;
+}
+.putInFolder:hover {
+  color: var(--inactive-color);
+}
+.trashBin {
+  display: none !important;
+  color: #fff;
+  position: absolute;
+  right: 5%;
+  top: 0.5rem;
+  cursor: pointer;
+}
+.trashBin:hover {
+  color: rgba(238, 67, 67, 1);
+}
+#clearTasks {
+  color: #ff3034;
+  font-size: 1rem;
+  background: none;
+  letter-spacing: 0.15rem;
+  padding: 1rem;
+  border: 1px solid crimson;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 3px 3px 12px rgba(255, 48, 52, 1);
+  outline-color: crimson;
+}
+#clearTasks:hover {
+  color: #fff;
+  border: none;
+  /*	transition: color 300ms ease-in-out;*/
+  animation: clearTasks 400ms ease-in-out infinite alternate;
+}
+.movingToFolder {
+  background: var(--inactive-color) !important;
+  animation: readyToMove 600ms ease-in-out infinite alternate;
+}
+.highlightItem {
+  background: var(--active-color) !important;
+}
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
+.open {
+  background: rgba(175, 123, 197, 0.5);
+}
+.completed {
+  text-decoration: line-through;
+  color: #7a7a7a;
+}
+
+/***************************Animations*************************/
+
+@keyframes readyToMove {
+  0% {
+    background: linear-gradient(
+      90deg,
+      var(--inactive-color) 0%,
+      var(--active-color) 100%
+    );
+  }
+  10% {
+    background: linear-gradient(
+      90deg,
+      var(--active-color) 0%,
+      var(--inactive-color) 10%,
+      var(--active-color) 100%
+    );
+  }
+  20% {
+    background: linear-gradient(
+      90deg,
+      var(--active-color) 0%,
+      var(--inactive-color) 20%,
+      var(--active-color) 100%
+    );
+  }
+  30% {
+    background: linear-gradient(
+      90deg,
+      var(--active-color) 0%,
+      var(--inactive-color) 30%,
+      var(--active-color) 100%
+    );
+  }
+  40% {
+    background: linear-gradient(
+      90deg,
+      var(--active-color) 0%,
+      var(--inactive-color) 40%,
+      var(--active-color) 100%
+    );
+  }
+  50% {
+    background: linear-gradient(
+      90deg,
+      var(--active-color) 0%,
+      var(--inactive-color) 50%,
+      var(--active-color) 100%
+    );
+  }
+  60% {
+    background: linear-gradient(
+      90deg,
+      var(--active-color) 0%,
+      var(--inactive-color) 60%,
+      var(--active-color) 100%
+    );
+  }
+  70% {
+    background: linear-gradient(
+      90deg,
+      var(--active-color) 0%,
+      var(--inactive-color) 70%,
+      var(--active-color) 100%
+    );
+  }
+  80% {
+    background: linear-gradient(
+      90deg,
+      var(--active-color) 0%,
+      var(--inactive-color) 80%,
+      var(--active-color) 100%
+    );
+  }
+  90% {
+    background: linear-gradient(
+      90deg,
+      var(--active-color) 0%,
+      var(--inactive-color) 90%,
+      var(--active-color) 100%
+    );
+  }
+  100% {
+    background: linear-gradient(
+      90deg,
+      var(--active-color) 0%,
+      var(--inactive-color) 100%,
+      var(--active-color) 100%
+    );
+  }
+}
+@keyframes clearTasks {
+  from {
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 48, 52, 0.6);
+    box-shadow: 3px 3px 12px rgba(255, 48, 52, 0.6);
+  }
+  to {
+    color: rgba(255, 255, 255, 1);
+    background: rgba(255, 48, 52, 1);
+    box-shadow: 3px 3px 12px rgba(255, 48, 52, 1);
+  }
+}
+@keyframes addFolder {
+  from {
+    box-shadow: 2px 2px 9px rgba(175, 123, 197, 0.5);
+  }
+  to {
+    box-shadow: 2px 2px 9px rgba(175, 123, 197, 1);
+  }
+}
+@keyframes addTask {
+  from {
+    box-shadow: 2px 2px 9px rgba(0, 203, 255, 0.5);
+  }
+  to {
+    box-shadow: 2px 2px 9px rgba(0, 203, 255, 1);
+  }
+}
+@keyframes delete {
+  from {
+    box-shadow: 2px 2px 9px rgba(238, 67, 67, 0.5);
+  }
+  to {
+    box-shadow: 2px 2px 9px rgba(238, 67, 67, 1);
+  }
+}
+
+/************************Media Queries*************************/
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 90%;
+  }
+}
+@media (max-width: 1024px) {
+  #newEntry,
+  #newFolderValue,
+  #newTaskValue,
+  #taskList,
+  #selectFolder {
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 90%;
+  }
+}
+@media (max-width: 768px) {
+  .dropDown {
+    width: 5rem;
+  }
+  .newTask {
+    width: 84vw;
+    margin: 0 auto;
+  }
+  .newFolder {
+    width: 84vw;
+    margin: 0 auto;
+  }
+}
